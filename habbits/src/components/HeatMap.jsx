@@ -19,10 +19,13 @@ const data = [
 //get every unique y value from data[], put it in a set
 
 const Heatmap = ( {width, height} ) => {
+
    const boundsWidth = width - MARGIN.right - MARGIN.left;
    const boundsHeight = height - MARGIN.top - MARGIN.bottom;
+   
    const allYGroups = useMemo(() => [...new Set(data.map((d) => d.y))], [data]);
    const allXGroups = useMemo(() => [...new Set(data.map((d) => d.x))], [data]);
+   
    const [min = 0, max = 0] = d3.extent(data.map((d) => d.value));
 
    const xScale = useMemo(() => {
@@ -61,8 +64,8 @@ const Heatmap = ( {width, height} ) => {
          <div className="square"
             style={{
                position: "absolute",
-               top: y,
-               left: x,
+               top: yScale(d.y),
+               left: xScale(d.x),
                width: xScale.bandwidth(),
                height: yScale.bandwidth(),
                backgroundColor: colorScale(d.value),
@@ -86,7 +89,7 @@ const Heatmap = ( {width, height} ) => {
                textAnchor: "middle",
                fontSize: 10,
                position: "absolute",
-               top: boundsHeight + 10,
+               top: boundsHeight,
                left: x + xScale.bandwidth() / 2,
             }}
             key={i}
@@ -102,28 +105,32 @@ const Heatmap = ( {width, height} ) => {
          return null;
       }
       return (
-         <text
+         <p
             key={i}
-            x={-5}
-            y={y + yScale.bandwidth() / 2}
-            textAnchor="end"
-            dominantBaseline="middle"
-            fontSize={10}
-         >
+            style={{
+               textTransform: "capitalize",
+               textAnchor: "end",
+               fontSize: 10,
+               position: "absolute",
+               top: y + yScale.bandwidth() / 2,
+               left: 0,
+               dominantBaseline: "middle",
+               fontSize: 10,
+            }}>
             {name}
-         </text>
+         </p>
       );
    });
  
    return (   
-      <div width={width} height={height}>
-         <rectangles
-            width={boundsWidth}
-            height={boundsHeight}>
-               {renderRectangles}
-               {xLabels}
-               {yLabels}
-         </rectangles>
+      <div style={{
+         width: {boundsWidth},
+         height: {boundsHeight},
+         transform: `translate(${[MARGIN.left, MARGIN.top].join(",")})`
+      }}>
+         {renderRectangles}
+         {xLabels}
+         {yLabels}
       </div>
    );
 }
