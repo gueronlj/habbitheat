@@ -4,6 +4,7 @@ import { Layout, Menu, theme} from 'antd'
 const { Header, Sider, Content } = Layout
 import Heatmap from './components/HeatMap'
 import RenderSquares from './components/homebrewMap'
+import BlankGrid from './components/BlankGrid'
 
 const user = {
   name: 'Lorens',
@@ -35,7 +36,6 @@ function App() {
 
   return (
     <div className="App">
-
       <Header
         style={{
           display: 'flex',
@@ -46,11 +46,7 @@ function App() {
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
       </Header>
       
-      <Layout>
-        <Heatmap
-          width={500}
-          height={500}/>
-      </Layout>
+      <BlankGrid />
 
     </div>
   )

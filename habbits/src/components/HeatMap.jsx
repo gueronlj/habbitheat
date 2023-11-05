@@ -55,11 +55,8 @@ const Heatmap = ( {width, height} ) => {
       const y = yScale(d.y);
 
       if (d.value === null || !x || !y) {
-         console.log("Stopped drawing")
          return;
        }
-
-      console.log("drawing a square")
       return (
          <div className="square"
             style={{
@@ -126,7 +123,6 @@ const Heatmap = ( {width, height} ) => {
       <div style={{
          width: {boundsWidth},
          height: {boundsHeight},
-         transform: `translate(${[MARGIN.left, MARGIN.top].join(",")})`
       }}>
          {renderRectangles}
          {xLabels}

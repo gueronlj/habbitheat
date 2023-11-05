@@ -37,23 +37,25 @@ const RenderSquares = ({width, hight}) => {
       .domain([min, max]);
 
    //draw a square for every data point
-   const renderData = data.map((node) => {
+   const renderData = data.map((node, i) => {
       if (node.value === null || !node.x || !node.y){
          //stop drawing
          return;
       }
+      
       return (
          <div className="square"
-            key={node.value+node.x+node.y}
+            key={i}
             style={{backgroundColor: colorScale(node.value)}}
          />
       )
    })
    
    return (
-      <div>{renderData}</div>
+      <div className="column">
+         {renderData}
+      </div>
    )
-
 }
 
 export default RenderSquares;
