@@ -23,9 +23,21 @@ const BlankGrid = () => {
 
    }
 
-   return (
+   const days = ["S","M", "T", "W", "T", "F", "S"]
+   const dayLabels = days.map((day) => {
+      return (
+         <div className="label">
+            <h3>{day}</h3>
+         </div>
+      )
+   })
+
+   return (<>
+      <div className="label-container">
+        {dayLabels}
+      </div>
       <div className="grid">{squaresToRender}</div>
-   )
+   </>)
 }
 
 export default BlankGrid;
