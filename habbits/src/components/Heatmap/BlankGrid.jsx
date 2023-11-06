@@ -33,10 +33,13 @@ const BlankGrid = () => {
    })
 
    return (<>
-      <div className="label-container">
-        {dayLabels}
+      
+      <div className="grid">
+         <div className="label-container">
+            {dayLabels}
+         </div>
+         {squaresToRender}
       </div>
-      <div className="grid">{squaresToRender}</div>
    </>)
 }
 
