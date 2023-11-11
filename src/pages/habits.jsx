@@ -10,8 +10,7 @@ const Habits = () => {
          <HeatGraph
             key={i}
             activity={habit.title}
-            data={habit.dates}
-         />
+            data={habit.dates}/>
       )
    })
 

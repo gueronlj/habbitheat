@@ -109,6 +109,14 @@ text{
   flex-direction: row;
   justify-content: flex-start;
   padding: 10px;
+  padding-left: 1.5em;
+  align-items: baseline;
+}
+
+.toolbar > *{
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-right: 1em;
 }
 
 @media (prefers-color-scheme: light) {
