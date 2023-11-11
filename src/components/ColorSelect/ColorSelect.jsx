@@ -3,7 +3,7 @@ import { Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
 const redTheme = {
-   0: '#f4decd',
+   0: '#ffffff',
    2: '#e4b293',
    4: '#d48462',
    10: '#c2533a',
@@ -12,7 +12,7 @@ const redTheme = {
  }
 
 const blueTheme = {
-   0: '#cfe3f5',
+   0: '#ffffff',
    2: '#9ecae1',
    4: '#6baed6',
    10: '#4292c6',
@@ -21,7 +21,7 @@ const blueTheme = {
 }
 
 const orangeTheme = {
-   0: '#ffffcc',
+   0: '#ffffff',
    2: '#ffeda0',
    4: '#fed976',
    10: '#feb24c',
@@ -30,7 +30,7 @@ const orangeTheme = {
 }
 
 const lemonTheme = { 
-   0: '#fdff94',
+   0: '#ffffff',
    2: '#f9f871',
    4: '#f5f442',
    10: '#f2de02',
