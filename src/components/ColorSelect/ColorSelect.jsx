@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown, Space } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { BgColorsOutlined, SettingFilled, SettingOutlined, SettingTwoTone } from '@ant-design/icons';
 
 const redTheme = {
    0: '#ffffff',
@@ -85,8 +85,8 @@ export const ColorSelect = ({setHeatColors}) => {
          trigger={['click']}>
          <a onClick={(e) => e.preventDefault()}>
          <Space>
-            Color
-            <DownOutlined />
+            <SettingOutlined
+                  style={{ fontSize: '26px', color: 'white' }}/>
          </Space>
       </a>
       </Dropdown>

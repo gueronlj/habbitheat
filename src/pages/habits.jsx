@@ -1,16 +1,21 @@
 import HeatGraph from '../components/Heatmap/Heatgraph.jsx'
-import fetchHabits from '../utilities/fetch-habits.js'
+import {fetchHabits} from '../utilities/api.js'
 import {useQuery} from '@tanstack/react-query'
+import { addProgress } from '../utilities/api.js'
+import { useEffect, useState } from 'react';
 
 const Habits = () => {
+
    const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(1)})
 
-   const heatMaps = result.data?.map((habit, i ) => {
+   const heatMaps = result.data?.map((habit) => {
       return (
          <HeatGraph
-            key={i}
+            key={habit.id}
             activity={habit.title}
-            data={habit.dates}/>
+            data={habit.dates}
+            id={habit.id}
+            result={result}/>
       )
    })
 

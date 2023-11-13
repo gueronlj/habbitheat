@@ -6,14 +6,15 @@ const menuItems = ['Login', 'Logout', 'Profile'].map((key) => ({
 }));
 
 export const AppBar = () => {
-   return (
-      <Header style={{ display: 'flex', alignItems: 'center'}}>
-          <h2>Happy Habbit</h2>
-          <Menu 
-            theme="dark" 
-            mode="horizontal" 
-            defaultSelectedKeys={['2']} 
-            items={menuItems} />
-        </Header>
-   )
+  return (
+    <Header style={{ display: 'flex', alignItems: 'center', backgroundColor: '#213547'}}>
+      <h2>Habit Visualizer</h2>
+      <Menu 
+        theme="dark" 
+        mode="horizontal" 
+        defaultSelectedKeys={["2"]} 
+        items={menuItems} 
+        style={{backgroundColor: '#213547'}}/>
+    </Header>
+  )
 }
