@@ -1,8 +1,6 @@
 import HeatGraph from '../components/Heatmap/Heatgraph.jsx'
 import {fetchHabits} from '../utilities/api.js'
 import {useQuery} from '@tanstack/react-query'
-import { addProgress } from '../utilities/api.js'
-import { useEffect, useState } from 'react';
 
 const Habits = () => {
 

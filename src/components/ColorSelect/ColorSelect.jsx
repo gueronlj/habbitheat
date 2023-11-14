@@ -86,7 +86,7 @@ export const ColorSelect = ({setHeatColors}) => {
          <a onClick={(e) => e.preventDefault()}>
          <Space>
             <SettingOutlined
-                  style={{ fontSize: '26px', color: 'white' }}/>
+                  style={{ fontSize: '24px', color: 'white' }}/>
          </Space>
       </a>
       </Dropdown>
