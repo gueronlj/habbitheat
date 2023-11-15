@@ -24,10 +24,6 @@ const HeatGraph = ({data, activity, id, result}) => {
          setLoading(true)
          await addProgress(habitId, data)
          await result.refetch();
-         setNewData({
-            date: currentDate,
-            count: 5
-         })
       }catch(e){
          console.log(e)
       }finally{
