@@ -1,24 +1,18 @@
-import { Layout, Menu} from 'antd'
-const { Header } = Layout
+import style from './header.module.css'
 import { Link } from 'react-router-dom'
 
-const menuItems = ['Login', 'Logout', 'Profile'].map((key) => ({
-  key,
-  label: key,
-}));
-
-export const AppBar = () => {
-  return (
-    <Header style={{ display: 'flex', alignItems: 'center', backgroundColor: '#213547'}}>
-      <h2>Habit Visualizer</h2>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-      <Menu 
-        theme="dark" 
-        mode="horizontal" 
-        defaultSelectedKeys={["2"]} 
-        items={menuItems} 
-        style={{backgroundColor: '#213547'}}/>
-    </Header>
-  )
+const Header = () => {
+   return(
+      <div className={style.header}>
+         <h2>Habit Heat</h2>
+         <div className={style.link}>
+            <Link to="/">Heatmaps</Link>
+         </div>
+         <div className={style.link}>
+            <Link to="/profile">Profile</Link>
+         </div>
+      </div>
+   )
 }
+
+export default Header;

@@ -16,9 +16,10 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #f2f3ff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -26,13 +27,6 @@ a:hover {
 body {
   min-width: 320px;
   min-height: 100vh;
-}
-
-h2{
-  color: aliceblue;
-  line-height: .8;
-  align-content: baseline;
-  margin-right: 50px;
 }
 
 button {
@@ -84,10 +78,6 @@ h3 {
   margin-block-end: 0;
 }
 
-.cant-layout{
-  background-color: #21212121;
-}
-
 .w-heatmap{
   width: 100%;
 }
@@ -123,6 +113,12 @@ text{
 .habit-container{
   margin-bottom: 2em;
   width:100vw;
+}
+
+.profile-container{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
 }
 
 .ant-form-item-control-input-content {

@@ -1,0 +1,16 @@
+.sideMenu{
+   display: flex;
+   flex-direction: column;
+   border-right: 1px solid #f9f9f9;
+   padding: 20px;
+   width: 150px;
+ }
+
+ .sideMenu li{
+   list-style: none;
+   margin-bottom: 10px;
+ }
+
+ .sideMenu ul{
+   padding-left: 0px;
+ }

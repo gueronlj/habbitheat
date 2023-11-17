@@ -1,9 +1,9 @@
-import './App.css'
-import {QueryClientProvider, QueryClient,} from '@tanstack/react-query'
+import './App.css';
+import {QueryClientProvider, QueryClient,} from '@tanstack/react-query';
 import Habits from './pages/habits.jsx';
-import Login from './pages/login.jsx';
-import { AppBar } from './components/Header/header.jsx'
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Header from './components/Header/header.jsx';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Profile from './pages/profile.jsx';
 
 const queryClient = new QueryClient()
 
@@ -12,10 +12,10 @@ function App() {
     <Router>
       <QueryClientProvider client={queryClient}>
         <div> 
-          <AppBar/>
+          <Header/>
           <Routes>
             <Route path="/" element={<Habits />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
 
         </div>

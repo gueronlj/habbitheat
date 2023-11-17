@@ -40,7 +40,7 @@ const HeatGraph = ({data, activity, id, result}) => {
                   style={{ fontSize: '24px', color: 'white' }}
                   onClick={() => handleAddProgress(id)}/>
             :
-               <p>LOADING</p>
+               <p>Processing...</p>
             }
             <ColorSelect
                setHeatColors={setHeatColors}/>

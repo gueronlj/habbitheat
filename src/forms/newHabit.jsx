@@ -41,14 +41,14 @@ const NewHabitForm = () => {
                {required: true,},
             ]}>
             <Input 
-               defaultValue={"Enter title"}/>
-            <Button type="primary" htmlType="submit">
+               placeholder={"Enter title"}/>  
+         </Form.Item>
+         <Button type="primary" htmlType="submit">
                Submit
-            </Button>
-            <Button htmlType="button" onClick={onReset}>
-               Reset
-            </Button>
-         </Form.Item>    
+         </Button>
+         <Button htmlType="button" onClick={onReset}>
+            Reset
+         </Button>   
       </Form>
    );
 };
