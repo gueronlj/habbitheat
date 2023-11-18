@@ -1,10 +1,10 @@
 import style from './side-menu.module.css'
 
-const SideMenu = () => {
+const SideMenu = ({setShowForm}) => {
    return(
       <div className={style.sideMenu}>
          <ul>
-            <li>New</li>
+            <li onClick={() => setShowForm(true)}>New</li>
             <li>Stuff</li>
          </ul>
       </div>

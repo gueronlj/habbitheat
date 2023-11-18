@@ -121,12 +121,15 @@ text{
   height: 100vh;
 }
 
-.ant-form-item-control-input-content {
+#new-habit-form{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.ant-form-item-control-input-content > * {
-  margin: 8px;
+
+#new-habit-form > *{
+  margin: 0.5em;
 }
 
 @media (prefers-color-scheme: light) {

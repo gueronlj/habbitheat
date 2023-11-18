@@ -1,36 +1,26 @@
 import { Button, Form, Input} from 'antd';
 import { postHabit } from '../utilities/api';
 
-const layout = {
-   labelCol: {
-      span: 4,
-   },
-   wrapperCol: {
-      span: 10,
-   },
-   
-};
-
-const NewHabitForm = () => {
+const NewHabitForm = ({query, setShowForm}) => {
    const [form] = Form.useForm();
    const userID = 1;
    
-   const onFinish = () => {
-      //onsubmit
-      const data =  {
-         title: form.getFieldValue('title'),
-         dates: [],
+   const onFinish = async () => {
+      try{
+         const data =  {
+            title: form.getFieldValue('title'),
+            dates: [],
+         }
+         await postHabit(data, userID)
+         await query.refetch();
+         setShowForm(false);
+      } catch(e){
+         console.log(e)
       }
-      postHabit(data, userID)
-   };
-
-   const onReset = () => {
-      form.resetFields();
    };
 
    return (
       <Form
-         {...layout}
          form={form}
          name="new-habit-form"
          onFinish={onFinish}
@@ -43,12 +33,12 @@ const NewHabitForm = () => {
             <Input 
                placeholder={"Enter title"}/>  
          </Form.Item>
-         <Button type="primary" htmlType="submit">
+         <button htmlType="submit">
                Submit
-         </Button>
-         <Button htmlType="button" onClick={onReset}>
-            Reset
-         </Button>   
+         </button>
+         <button onClick={() => setShowForm(false)}>
+            Cancel
+         </button>   
       </Form>
    );
 };

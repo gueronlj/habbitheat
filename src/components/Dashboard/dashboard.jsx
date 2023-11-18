@@ -1,15 +1,22 @@
 import styles from './dashboard.module.css';
 import { useQuery } from '@tanstack/react-query';
-import { fetchHabits } from '../../utilities/api';
+import { fetchHabits, deleteHabit } from '../../utilities/api';
+import NewHabitForm from '../../forms/newHabit';
 
-const Dashboard = () => {
+
+const Dashboard = ( {showForm, setShowForm}) => {
    const userId = 1;
 
    const query = useQuery({queryKey:['habits'], queryFn: () => fetchHabits(userId)})
 
 
-   const handleDelete = (id) => {
-      console.log(`deleting: ${id}`);
+   const handleDelete = async (id) => {
+      try{
+         await deleteHabit(id);
+         query.refetch();
+      } catch(e){
+         console.log(e)
+      } 
    }
 
    return(
@@ -24,7 +31,11 @@ const Dashboard = () => {
                   </div>
                )
             })}
-         </div>
+            {showForm && 
+            <NewHabitForm 
+               setShowForm={setShowForm}
+               query={query}/> }
+         </div>       
       </div>
    )
 }

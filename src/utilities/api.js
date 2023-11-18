@@ -29,3 +29,12 @@ export const addProgress = async (habitId, data) => {
    }
 }
 
+export const deleteHabit = async (habitId) => {
+   try{
+      const response = await axios.delete(`${url}/api/habits/${habitId}`);
+      return response.data;
+   }catch(e){
+      return e
+   }
+}
+
