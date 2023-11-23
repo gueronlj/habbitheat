@@ -22,10 +22,12 @@ const NewHabitForm = ({query, setShowForm}) => {
 
    return (
       <div className={styles.formContainer}>
+         
          <Form
             form={form}
             name="new-habit-form"
             onFinish={onFinish}>
+            <h3>+ Add</h3>
             <Form.Item
                name="Title"
                rules={[

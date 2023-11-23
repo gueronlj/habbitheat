@@ -126,6 +126,7 @@ text{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 #new-habit-form > *{
@@ -135,13 +136,25 @@ text{
 #edit-habit-form{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 }
 
-#edit-habit-form .ant-form-item{
-  margin: 0px;
+#edit-habit-form > *{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0;
 }
+
+#edit-habit-form .ant-form-item-control-input{
+  background-color: rgb(125, 153, 255);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {

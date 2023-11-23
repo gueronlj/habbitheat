@@ -33,6 +33,7 @@ const Dashboard = ( {showForm, setShowForm}) => {
             {query.data?.map((habit) => {
                return(
                   <SettingsCard
+                     key={habit.id}
                      habit={habit}
                      setTargetId={setTargetId}
                      setShowConfirm={setShowConfirm}/>

@@ -11,82 +11,83 @@ const EditHabit = ({ habit, setHabit, setHabits }) => {
 
    const items = [
       {
-          label: "Red",
-          key: '0',
-          onClick: () => {
-             
-          }
+         label: "Minutes",
+         key: '0',
+         onClick: () => {}
       },
       {
-        label: "Green",
-        key: '1',
-        onClick: () => {
-           
-        }
+      label: "Hours",
+      key: '1',
+      onClick: () => {}
       },
       {
-         label: "Blu",
+         label: "Attempts",
          key: '2',
-         onClick: () => {
-             
-         }
+         onClick: () => {}
       },
       {
-         label: "Orange",
+         label: "Rounds",
          key: '3',
-         onClick: () => {
-             
-         }
+         onClick: () => {}
       },
       {
-         label: "Yellow",
+         label: "Cycles",
          key: '4',
-         onClick: () => {
-             
-         }
+         onClick: () => {}
+      },
+      {
+         label: "Pages",
+         key: '5',
+         onClick: () => {}
+      },
+      {
+         label: "Commits",
+         key: '6',
+         onClick: () => {}
+      },
+      {
+         label: "Sessions",
+         key: '7',
+         onClick: () => {}
       }
     ];
 
    return(
-      <div className={styles.formContainer}>
-         <Form
-            form={form}
-            name="edit-habit-form"
-            onFinish={onSubmit}>
-               <Space>
-                  Weighted  
-               </Space>
-            <Form.Item
-               name="Weighted"
-               rules={[
-                  {required: true,},
-               ]}>
-               
-               <Switch 
-                 />
-            </Form.Item>
-            <Form.Item
-               name="Units">
-               <Dropdown
-                  menu={{
-                     items,
-                  }}
-                  trigger={['click']}>
-                  <a onClick={(e) => e.preventDefault()}>
-                     <Space>
-                        Units
-                     </Space>
-                     <Space>
-                        <DownOutlined />
-                     </Space>
-                  </a>
-               </Dropdown>  
-            </Form.Item>
-            <button htmltype="submit">
-                  Save
-            </button>
-         </Form>
-      </div>
+      <Form
+         form={form}
+         name="edit-habit-form"
+         onFinish={onSubmit}>
+         <Form.Item
+            name="Weighted"
+            rules={[
+               {required: true,},
+            ]}>
+            <Space>
+               Weighted  
+            </Space>
+            <Switch />
+         </Form.Item>
+         <Form.Item
+            name="Units">
+            <Dropdown
+               menu={{
+                  items,
+               }}
+               trigger={['click']}>
+               <a onClick={(e) => e.preventDefault()}>
+                  <Space>
+                     Units
+                  </Space>
+                  <Space>
+                     <DownOutlined />
+                  </Space>
+               </a>
+            </Dropdown>  
+         </Form.Item>
+         <button htmltype="submit">
+               Save
+         </button>
+      </Form>    
    )
 };
 export default EditHabit;

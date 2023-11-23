@@ -1,10 +1,14 @@
 .formContainer{
    background-color: #2e3373;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
    height: fit-content;
    padding-top: 10px;
    padding-bottom: 10px;
    border-radius: 5px;
-   margin-top: 10px;
+   margin: 10px;
 }
 
 .formContainer input{
@@ -15,8 +19,7 @@
    width: 300PX;
 }
 
-.formContainer form{
-   display: flex;
-   flex-direction: row;
-   align-items: baseline;
+.formContainer h3{
+   color:aliceblue;
 }
+
