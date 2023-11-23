@@ -1,0 +1,14 @@
+.card{
+   background-color: #2e3373;
+   border-radius: 5px;
+   display:flex;
+   flex-direction: row;
+   margin: 10px;
+   justify-content: space-around;
+   align-items: center;
+   padding: 10px;
+}
+
+.card h3{
+   margin-left: 20px;
+}

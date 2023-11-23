@@ -1,0 +1,22 @@
+.formContainer{
+   background-color: #2e3373;
+   height: fit-content;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   border-radius: 5px;
+   margin-top: 10px;
+}
+
+.formContainer input{
+   background-color: rgb(125, 153, 255);
+   border: none;
+   border-radius: 0%;
+   height: 40px;
+   width: 300PX;
+}
+
+.formContainer form{
+   display: flex;
+   flex-direction: row;
+   align-items: baseline;
+}

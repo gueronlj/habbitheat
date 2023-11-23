@@ -132,6 +132,17 @@ text{
   margin: 0.5em;
 }
 
+#edit-habit-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#edit-habit-form .ant-form-item{
+  margin: 0px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
