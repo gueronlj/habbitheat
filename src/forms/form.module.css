@@ -12,7 +12,7 @@
 }
 
 .formContainer input{
-   background-color: rgb(125, 153, 255);
+   background-color: rgb(74, 98, 186);
    border: none;
    border-radius: 0%;
    height: 40px;
@@ -22,4 +22,3 @@
 .formContainer h3{
    color:aliceblue;
 }
-

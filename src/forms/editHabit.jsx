@@ -2,8 +2,13 @@ import { Switch, Form, Dropdown, Space } from 'antd';
 import styles from './form.module.css';
 import { DownOutlined } from '@ant-design/icons';
 
-const EditHabit = ({ habit, setHabit, setHabits }) => {
+const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
    const [form] = Form.useForm();
+
+   const handleDelete = (id) => {
+      setTargetId(id)
+      setShowConfirm(true);
+   }
 
    const onSubmit = async () => {
 
@@ -84,9 +89,10 @@ const EditHabit = ({ habit, setHabit, setHabits }) => {
                </a>
             </Dropdown>  
          </Form.Item>
-         <button htmltype="submit">
+         <button className={styles.btn} htmltype="submit">
                Save
          </button>
+         <button className={styles.btn} onClick={()=>handleDelete(habit.id)}>Delete</button>
       </Form>    
    )
 };

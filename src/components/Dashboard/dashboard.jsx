@@ -14,8 +14,6 @@ const Dashboard = ( {showForm, setShowForm}) => {
 
    const query = useQuery({queryKey:['habits'], queryFn: () => fetchHabits(userId)})
 
- 
-
    const confirmDelete = async (id) => {
       try{
          await setShowConfirm(false);

@@ -3,7 +3,7 @@
    display: flex;
    flex-direction: row;
    align-items: center;
-   border-bottom: 1px solid #f9f9f9;
+   background-color:  rgb(74, 98, 186);
 }
 
 .header h2{
