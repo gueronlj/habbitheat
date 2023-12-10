@@ -17,8 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         redirect_uri: 'http://localhost:5173/'
       }}
       >
-      <App 
-        />
+      <App/>
     </Auth0Provider>
   </React.StrictMode>,
 )

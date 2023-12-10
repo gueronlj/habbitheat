@@ -1,12 +1,14 @@
 import { useCallback, useState } from 'react';
 import HeatMap from '@uiw/react-heat-map';
 import { ColorSelect } from '../ColorSelect/ColorSelect';
-import { CheckSquareOutlined } from '@ant-design/icons';
+import { CheckSquareFilled, CheckSquareOutlined } from '@ant-design/icons';
 import { addProgress } from '../../utilities/api.js';
 import { format } from 'date-fns';
+import {useQuery} from '@tanstack/react-query'
 
-const HeatGraph = ({data, activity, id, result}) => {
-
+const HeatGraph = ({data, activity, id, result }) => {
+   
+   
    const [heatColors, setHeatColors] = useState()
    const [loading, setLoading] = useState(false)
 
@@ -24,10 +26,9 @@ const HeatGraph = ({data, activity, id, result}) => {
          setLoading(true)
          await addProgress(habitId, data)
          await result.refetch();
+         setLoading(false)
       }catch(e){
          console.log(e)
-      }finally{
-         setLoading(false)
       }
    }
  
@@ -40,7 +41,8 @@ const HeatGraph = ({data, activity, id, result}) => {
                   style={{ fontSize: '24px', color: 'white' }}
                   onClick={() => handleAddProgress(id)}/>
             :
-               <p>Processing...</p>
+            <CheckSquareFilled
+               style={{ fontSize: '24px', color: 'green' }} />
             }
             <ColorSelect
                setHeatColors={setHeatColors}/>
@@ -50,7 +52,7 @@ const HeatGraph = ({data, activity, id, result}) => {
             rectSize={15}
             weekLabels={['S', 'M', 'T', 'W', 'Th', 'F', 'S']}
             monthLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov','Dec']}
-            startDate={new Date('2023/01/01')}
+            startDate={new Date('2023/10/28')}
             legendCellSize={0}
             panelColors={heatColors}/>
       </div>      

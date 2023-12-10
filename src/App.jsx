@@ -10,12 +10,17 @@ import Login from './pages/login.jsx';
 const queryClient = new QueryClient()
 
 function App() {
-  const { isAuthenticated, user } = useAuth0();
 
-  return (
-    !isAuthenticated ? <Login/> :
-      <Router>
-        <QueryClientProvider client={queryClient}>
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+
+  if ( !isAuthenticated ) {
+    <Login/>
+  }
+
+  if ( user ){
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Router>         
           <div> 
             <Header
               user={user}/>           
@@ -23,10 +28,11 @@ function App() {
               <Route path="/" element={<Habits />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>  
-          </div>
-        </QueryClientProvider>
-      </Router>
-  )
+          </div> 
+        </Router>
+      </QueryClientProvider>
+    )
+  }
 }
 
 export default App

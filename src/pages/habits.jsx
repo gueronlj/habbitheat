@@ -6,26 +6,34 @@ const Habits = () => {
 
    const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(1)})
 
-   const heatMaps = result.data?.map((habit) => {
-      return (
-         <HeatGraph
-            key={habit.id}
-            activity={habit.title}
-            data={habit.dates}
-            id={habit.id}
-            result={result}/>
-      )
-   })
+   const HeatMaps = () => {
+      return (<>
+         {result.data.map((habit) => (
+            <HeatGraph
+               key={habit.id}
+               data={habit.dates}
+               activity={habit.title}
+               id={habit.id}
+               result={result}/>
+         ))}
+      </>);
+   };
+
 
    return(
       <div className="content">
-         {result.isError?
+         {!result &&
+            <p>Server down!</p>}
+
+         {result.isError &&
             <p>{result.error.message}</p> 
-         : null}
+         }
 
          {result.isLoading?
             <p>Loading...</p>
-         : heatMaps}
+         : 
+          <HeatMaps />}
+
       </div>
    )
 }
