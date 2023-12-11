@@ -24,32 +24,38 @@ const Dashboard = ( {showForm, setShowForm}) => {
       }
    }
 
-   return(
-      <div className={styles.container}>
-         <h2>Tracked Habits</h2>
-         <div className={styles.cardsContainer}>
-            {query.data?.map((habit) => {
-               return(
-                  <SettingsCard
-                     key={habit.id}
-                     habit={habit}
-                     setTargetId={setTargetId}
-                     setShowConfirm={setShowConfirm}/>
-               )
-            })}
-            {showForm && 
-               <NewHabitForm 
-                  setShowForm={setShowForm}
-                  query={query}/>}
+   if (query.data?.name == 'AxiosError'){
+      return(
+         <p>Server is down!</p>
+      )
+   }else{
+      return(
+         <div className={styles.container}>
+            <h2>Tracked Habits</h2>
+            <div className={styles.cardsContainer}>
+               {query.data?.map((habit) => {
+                  return(
+                     <SettingsCard
+                        key={habit.id}
+                        habit={habit}
+                        setTargetId={setTargetId}
+                        setShowConfirm={setShowConfirm}/>
+                  )
+               })}
+               {showForm && 
+                  <NewHabitForm 
+                     setShowForm={setShowForm}
+                     query={query}/>}
+            </div>
+   
+            {showConfirm && 
+               <ConfirmModal
+                  onConfirm={confirmDelete}
+                  setShowConfirm={setShowConfirm}
+                  targetId={targetId}/>}       
          </div>
-
-         {showConfirm && 
-            <ConfirmModal
-               onConfirm={confirmDelete}
-               setShowConfirm={setShowConfirm}
-               targetId={targetId}/>}       
-      </div>
-   )
+      )
+   } 
 }
 
 export default Dashboard;

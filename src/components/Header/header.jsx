@@ -17,12 +17,15 @@ const Header = () => {
       <div className={style.header}>
          <h2>Habit Heat</h2>
          <p>Hello, {user.email}!</p>
+         
          <div className={style.link}>
             <Link to="/">Heatmaps</Link>
          </div>
+
          <div className={style.link}>
             <Link to="/dashboard">Dashboard</Link>
          </div>
+
          {isAuthenticated &&
             <div className={style.link}>
                <Link onClick={handleLogout}>Logout</Link>

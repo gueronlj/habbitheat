@@ -2,7 +2,7 @@ import './App.css';
 import {QueryClientProvider, QueryClient,} from '@tanstack/react-query';
 import Habits from './pages/habits.jsx';
 import Header from './components/Header/header.jsx';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from './components/Dashboard/dashboard.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
 import Login from './pages/login.jsx';
@@ -13,14 +13,10 @@ function App() {
 
   const { isAuthenticated, user, loginWithRedirect } = useAuth0();
 
-  if ( !isAuthenticated ) {
-    <Login/>
-  }
-
-  if ( user ){
+  if ( isAuthenticated ){
     return (
       <QueryClientProvider client={queryClient}>
-        <Router>         
+                
           <div> 
             <Header
               user={user}/>           
@@ -29,9 +25,13 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>  
           </div> 
-        </Router>
+      
       </QueryClientProvider>
     )
+  } else {
+    return(
+      <Login/>
+    ) 
   }
 }
 
