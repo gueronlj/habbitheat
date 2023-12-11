@@ -63,10 +63,7 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
          name="edit-habit-form"
          onFinish={onSubmit}>
          <Form.Item
-            name="Weighted"
-            rules={[
-               {required: true,},
-            ]}>
+            name="Weighted">
             <Space>
                Weighted  
             </Space>

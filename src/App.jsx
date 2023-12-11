@@ -6,12 +6,14 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from './components/Dashboard/dashboard.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
 import Login from './pages/login.jsx';
+import { useState } from 'react';
 
 const queryClient = new QueryClient()
 
 function App() {
 
   const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+  const [showForm, setShowForm] = useState(false);
 
   if ( isAuthenticated ){
     return (
@@ -22,7 +24,10 @@ function App() {
               user={user}/>           
             <Routes>
               <Route path="/" element={<Habits />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={
+                <Dashboard
+                  setShowForm={setShowForm}
+                  showForm={showForm}/>}/>
             </Routes>  
           </div> 
       
