@@ -7,8 +7,9 @@ const SettingsCard = ({habit, setTargetId, setShowConfirm}) => {
       <div key={habit.id} className={styles.card}>
          <h3>{habit.title}</h3>
          <EditHabit
-            setTargetId={setTargetId}ß
-            setShowConfirm={setShowConfirm}/>
+            setTargetId={setTargetId}
+            setShowConfirm={setShowConfirm}
+            habit={habit}/>
       </div>
    )
 }

@@ -62,6 +62,7 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
          form={form}
          name="edit-habit-form"
          onFinish={onSubmit}>
+
          <Form.Item
             name="Weighted">
             <Space>
@@ -69,6 +70,7 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
             </Space>
             <Switch />
          </Form.Item>
+
          <Form.Item
             name="Units">
             <Dropdown
@@ -86,6 +88,7 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
                </a>
             </Dropdown>  
          </Form.Item>
+         
          <button className={styles.btn} htmltype="submit">
                Save
          </button>
