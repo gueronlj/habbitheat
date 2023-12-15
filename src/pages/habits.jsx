@@ -3,29 +3,31 @@ import {fetchHabits} from '../utilities/api.js'
 import {useQuery} from '@tanstack/react-query'
 
 const Habits = () => {
-
    const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(1)})
-
-   const heatMaps = result.data?.map((habit) => {
-      return (
-         <HeatGraph
-            key={habit.id}
-            activity={habit.title}
-            data={habit.dates}
-            id={habit.id}
-            result={result}/>
-      )
-   })
+   
+   const HeatMaps = () => {
+      return ( <>
+         {result.data.map((habit) => (
+            <HeatGraph
+               key={habit.id}
+               title={habit.title}
+               id={habit.id}/>
+         ))}
+      </>);
+   };
 
    return(
       <div className="content">
-         {result.isError?
-            <p>{result.error.message}</p> 
-         : null}
+         {result.data?.name == 'AxiosError' &&
+            <p>Server is down!</p>}
+         
+         {result.isError &&
+            <p>{result.error.message}</p>}
 
          {result.isLoading?
             <p>Loading...</p>
-         : heatMaps}
+         : 
+          <HeatMaps/>}
       </div>
    )
 }

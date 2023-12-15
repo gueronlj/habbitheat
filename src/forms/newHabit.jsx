@@ -2,7 +2,7 @@ import { Button, Form, Input} from 'antd';
 import { postHabit } from '../utilities/api';
 import styles from './form.module.css';
 
-const NewHabitForm = ({query, setShowForm}) => {
+const NewHabitForm = ({ query, setShowForm }) => {
    const [form] = Form.useForm();
    const userID = 1;
    
@@ -21,13 +21,12 @@ const NewHabitForm = ({query, setShowForm}) => {
    };
 
    return (
-      <div className={styles.formContainer}>
-         
+      <div className={styles.formContainer}>     
          <Form
             form={form}
             name="new-habit-form"
             onFinish={onFinish}>
-            <h3>+ Add</h3>
+            <h3>New habit</h3>
             <Form.Item
                name="Title"
                rules={[

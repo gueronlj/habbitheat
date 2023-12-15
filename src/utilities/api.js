@@ -38,3 +38,12 @@ export const deleteHabit = async (habitId) => {
    }
 }
 
+export const getUserId = async (email) => {
+   try{
+      const response = await axios.get(`${url}/api/user/${email}/id`);
+      return response.data[0].id;
+   }catch(e){
+      return e
+   }
+}
+

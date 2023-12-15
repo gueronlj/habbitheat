@@ -1,32 +1,45 @@
 import './App.css';
-import {QueryClientProvider, QueryClient,} from '@tanstack/react-query';
 import Habits from './pages/habits.jsx';
 import Header from './components/Header/header.jsx';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import Dashboard from './components/Dashboard/dashboard.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
-import Login from './pages/login.jsx';
-
-const queryClient = new QueryClient()
+import { useEffect, useState } from 'react';
 
 function App() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+  const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
-  return (
-    !isAuthenticated ? <Login/> :
-      <Router>
-        <QueryClientProvider client={queryClient}>
-          <div> 
-            <Header
-              user={user}/>           
-            <Routes>
-              <Route path="/" element={<Habits />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>  
-          </div>
-        </QueryClientProvider>
-      </Router>
-  )
+  if (isAuthenticated){
+    return (<>                
+      <Header
+        user={user}/>
+
+      <Routes>
+        <Route 
+          path="/"
+          element={
+            <Habits/>} 
+        />
+        <Route 
+          path="/dashboard" 
+          element={
+            <Dashboard
+              setShowForm={setShowForm}
+              showForm={showForm}
+              user={user}/>}
+        />
+      </Routes>           
+    </>)
+  } else {
+    return (<>
+      <Header/>
+      <div className="content">
+        <button onClick={() => loginWithRedirect()}>Login</button>
+      </div>
+    </>)
+  }
 }
 
 export default App
