@@ -11,35 +11,36 @@ const HeatGraph = ({ title, id }) => {
    const URL = import.meta.env.VITE_APP_ENDPOINT_DEV;
 
    const fetchData = async () => {
-      try{
-         const response = await axios.get(`${URL}/api/habits/id/${id}`)
-         setData(response.data[0].dates)
-      } catch (e) {
-         console.log(e.message)
-      }
+        try{
+            const response = await axios.get(`${URL}/api/habits/id/${id}`)
+            setData(response.data[0].dates)
+        } catch (e) {
+            console.log(e.message)
+        }
    }
 
    useEffect(() => {
      fetchData()
    }, [])
  
-   return (
-      <div className = 'habit-container'>
-         <Toolbar
-            title={title}
-            loading={loading}
-            setLoading={setLoading}
-            setHeatColors={setHeatColors}
-            fetchData={fetchData}/>
-         <HeatMap
-            value={data}
-            rectSize={15}
-            weekLabels={['S', 'M', 'T', 'W', 'Th', 'F', 'S']}
-            monthLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov','Dec']}
-            startDate={new Date('2023/10/28')}
-            legendCellSize={0}
-            panelColors={heatColors}/>
-      </div>      
-   )
+    return (
+        <div className = 'habit-container'>
+            <Toolbar
+                title={title}
+                loading={loading}
+                setLoading={setLoading}
+                setHeatColors={setHeatColors}
+                fetchData={fetchData}
+                id={id}/>
+            <HeatMap
+                value={data}
+                rectSize={15}
+                weekLabels={['S', 'M', 'T', 'W', 'Th', 'F', 'S']}
+                monthLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov','Dec']}
+                startDate={new Date('2023/10/28')}
+                legendCellSize={0}
+                panelColors={heatColors}/>
+        </div>      
+    )
 }
 export default HeatGraph;
