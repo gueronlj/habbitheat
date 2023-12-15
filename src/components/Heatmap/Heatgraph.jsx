@@ -14,7 +14,6 @@ const HeatGraph = ({ title, id }) => {
       try{
          const response = await axios.get(`${URL}/api/habits/id/${id}`)
          setData(response.data[0].dates)
-         console.log(response.data);
       } catch (e) {
          console.log(e.message)
       }
