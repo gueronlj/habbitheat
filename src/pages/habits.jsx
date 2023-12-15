@@ -16,20 +16,20 @@ const Habits = () => {
       </>);
    };
 
-   return(
-      <div className="content">
-         {result.data?.name == 'AxiosError' &&
+    return(
+        <div className="content">
+            {result.data?.name == 'AxiosError' &&
             <p>Server is down!</p>}
-         
-         {result.isError &&
+            
+            {result.isError &&
             <p>{result.error.message}</p>}
 
-         {result.isLoading?
+            {result.isLoading?
             <p>Loading...</p>
-         : 
-          <HeatMaps/>}
-      </div>
-   )
+            : 
+            <HeatMaps/>}
+        </div>
+    )
 }
 
 export default Habits;
