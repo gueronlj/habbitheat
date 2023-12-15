@@ -3,7 +3,6 @@ import axios from "axios";
 const url = import.meta.env.VITE_APP_ENDPOINT_DEV;
 
 export const fetchHabits = async (userId) => {
-   console.log('fetching habits');
    try{
       const response = await axios.get(`${url}/api/habits/${userId}`);
       return response.data;

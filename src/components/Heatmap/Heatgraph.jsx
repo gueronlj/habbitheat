@@ -1,16 +1,17 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import HeatMap from '@uiw/react-heat-map';
 import { ColorSelect } from '../ColorSelect/ColorSelect';
 import { CheckSquareFilled, CheckSquareOutlined } from '@ant-design/icons';
 import { addProgress } from '../../utilities/api.js';
 import { format } from 'date-fns';
-import {useQuery} from '@tanstack/react-query'
+import axios from 'axios';
 
-const HeatGraph = ({data, activity, id, result }) => {
-   
-   
+const HeatGraph = ({ title, id }) => {
+
    const [heatColors, setHeatColors] = useState()
    const [loading, setLoading] = useState(false)
+   const [data, setData] = useState()
+   const URL = import.meta.env.VITE_APP_ENDPOINT_DEV;
 
    const currentDate = useCallback(() => {
       const formattedDate = format(new Date(), 'yyyy/MM/dd')
@@ -22,20 +23,34 @@ const HeatGraph = ({data, activity, id, result }) => {
          date: currentDate(),
          count: 5
       }
-      try{
+      try {
          setLoading(true)
          await addProgress(habitId, data)
-         await result.refetch();
+         await fetchData()
          setLoading(false)
-      }catch(e){
-         console.log(e)
+      } catch(e) {
+         console.log(e.message)
       }
    }
+
+   const fetchData = async () => {
+      try{
+         const response = await axios.get(`${URL}/api/habits/id/${id}`)
+         setData(response.data[0].dates)
+         console.log(response.data);
+      } catch (e) {
+         console.log(e.message)
+      }
+   }
+
+   useEffect(() => {
+     fetchData()
+   }, [])
  
    return (
       <div className = 'habit-container'>
          <div className='toolbar'>
-            <h3>{activity}</h3>
+            <h3>{title}</h3>
             {!loading?
                <CheckSquareOutlined
                   style={{ fontSize: '24px', color: 'white' }}

@@ -10,10 +10,8 @@ const Habits = () => {
          {result.data.map((habit) => (
             <HeatGraph
                key={habit.id}
-               data={habit.dates}
-               activity={habit.title}
-               id={habit.id}
-               result={result}/>
+               title={habit.title}
+               id={habit.id}/>
          ))}
       </>);
    };
