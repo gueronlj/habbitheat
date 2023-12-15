@@ -30,7 +30,8 @@ const HeatGraph = ({ title, id }) => {
             loading={loading}
             setLoading={setLoading}
             setHeatColors={setHeatColors}
-            fetchData={fetchData}/>
+            fetchData={fetchData}
+            id={id}/>
          <HeatMap
             value={data}
             rectSize={15}

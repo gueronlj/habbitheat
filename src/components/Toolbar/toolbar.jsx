@@ -4,7 +4,7 @@ import { addProgress } from '../../utilities/api.js';
 import { format } from 'date-fns';
 import { useCallback } from 'react';
 
-export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData}) => {
+export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, id}) => {
 
    const currentDate = useCallback(() => {
       const formattedDate = format(new Date(), 'yyyy/MM/dd')
