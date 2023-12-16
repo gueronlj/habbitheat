@@ -1,6 +1,6 @@
-import { ArrowDownOutlined } from '@ant-design/icons';
-import { Dropdown, Space } from 'antd';
-import style from './style.module.css';
+import { CaretDownFilled } from '@ant-design/icons';
+import { Dropdown} from 'antd';
+import style from '../style.module.css';
 
 export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
 
@@ -42,7 +42,9 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             <a onClick={(e) => e.preventDefault()}>
                 <div className={style.dropdown}>
                     <p>{intensity}</p>
-                    <ArrowDownOutlined/>
+                    <div className={style.arrow}>
+                        <CaretDownFilled/>
+                    </div>
                 </div>  
             </a>
         </Dropdown>
