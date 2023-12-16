@@ -27,9 +27,9 @@ function App() {
                         path="/dashboard" 
                         element={
                             <Dashboard
-                            setShowForm={setShowForm}
-                            showForm={showForm}
-                            user={user}/>
+                                setShowForm={setShowForm}
+                                showForm={showForm}
+                                user={user}/>
                         }/>
                 </Routes>  
                 :

@@ -1,34 +1,41 @@
-import { ColorSelect } from '../ColorSelect/ColorSelect.jsx';
+import { ColorSelect } from './ColorSelect/ColorSelect.jsx';
 import { CheckSquareFilled, CheckSquareOutlined } from '@ant-design/icons';
 import { addProgress } from '../../utilities/api.js';
-import { format } from 'date-fns';
+import { format, set } from 'date-fns';
 import { useCallback } from 'react';
+import {IntensitySelect} from './IntensitySelect/intensity-select.jsx';
+import { useState } from 'react';
 
 export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, id}) => {
 
-   const currentDate = useCallback(() => {
-      const formattedDate = format(new Date(), 'yyyy/MM/dd')
-      return formattedDate
-   })
+    const [intensityIndex, setIntensityIndex] = useState('Intensity')
 
-   const handleAddProgress = async (habitId) => {
-      const data = {
-         date: currentDate(),
-         count: 5
-      }
-      try {
-         setLoading(true)
-         await addProgress(habitId, data)
-         await fetchData()
-         setLoading(false)
-      } catch(e) {
-         console.log(e.message)
-      }
-   }
+    const currentDate = useCallback(() => {
+        const formattedDate = format(new Date(), 'yyyy/MM/dd')
+        return formattedDate
+    })
+
+    const handleAddProgress = async (habitId) => {
+        const data = {
+            date: currentDate(),
+            count: intensityIndex
+        }
+        try {
+            setLoading(true)
+            await addProgress(habitId, data)
+            await fetchData()
+            setLoading(false)
+        } catch(e) {
+            console.log(e.message)
+        }
+    }
 
    return (
       <div className='toolbar'>
             <h3>{title}</h3>
+            <IntensitySelect
+                intensity={intensityIndex}
+                setIntensityIndex={setIntensityIndex}/>
             {!loading?
                <CheckSquareOutlined
                   style={{ fontSize: '24px', color: 'white' }}
