@@ -1,5 +1,5 @@
 import { ColorSelect } from './ColorSelect/ColorSelect.jsx';
-import { CheckSquareFilled, CheckSquareOutlined } from '@ant-design/icons';
+import { CheckSquareFilled, CheckSquareOutlined, UndoOutlined } from '@ant-design/icons';
 import { addProgress } from '../../utilities/api.js';
 import { format } from 'date-fns';
 import { useCallback } from 'react';
@@ -31,8 +31,18 @@ export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, i
         }
     }
 
-   return (
-      <div className={style.toolbar}>
+    const handleUndo = async () => {
+        try {
+            setLoading(true)
+            await fetchData()
+            setLoading(false)
+        } catch(e) {
+            console.log(e.message)
+        }
+    };
+
+    return (
+        <div className={style.toolbar}>
             <h3>{title}</h3>
             <div className={style.tools}>
                 <IntensitySelect
@@ -46,9 +56,12 @@ export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, i
                 <CheckSquareFilled
                 style={{ fontSize: '24px', color: 'green' }} />
                 }
+                <UndoOutlined
+                    style={{ fontSize: '24px', color: 'white' }}
+                    onClick={handleUndo} />
                 <ColorSelect
-                setHeatColors={setHeatColors}/>
+                    setHeatColors={setHeatColors}/>
             </div>        
-         </div>
-   )
+        </div>
+    )
 };

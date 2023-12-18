@@ -83,8 +83,8 @@ export const ColorSelect = ({setHeatColors}) => {
             trigger={['click']}>
             <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                <SettingOutlined
-                    style={{ fontSize: '24px', color: 'white' }}/>
+                <BgColorsOutlined
+                    style={{ fontSize: '24px', color: 'white' }} />
                 </Space>
             </a>
         </Dropdown>

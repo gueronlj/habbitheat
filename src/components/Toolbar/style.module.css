@@ -17,6 +17,10 @@
     border-left: 1px solid black;
 }
 
+.arrow:hover{
+    background-color: rgb(86, 137, 209);
+}
+
 .toolbar{
     display: flex;
     flex-direction: row;
@@ -38,8 +42,4 @@
 
 .tools > *{
     margin: .5em;
-}
-
-.tools > *:hover{
-    cursor: pointer;
 }
