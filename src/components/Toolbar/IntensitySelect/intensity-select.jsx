@@ -1,8 +1,11 @@
 import { CaretDownFilled } from '@ant-design/icons';
 import { Dropdown} from 'antd';
 import style from '../style.module.css';
+import { useState } from 'react';
+import { set } from 'date-fns';
 
 export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
+    const [label, setLabel] = useState('Light')
 
     const items = [
         {
@@ -10,6 +13,7 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             key: '0',
             onClick: () => {
                 setIntensityIndex(1)
+                setLabel('Light')
             }
         },
         {
@@ -17,6 +21,7 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             key: '1',
             onClick: () => {
                 setIntensityIndex(6)
+                setLabel('Medium')
             }
         },
         {
@@ -24,6 +29,7 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             key: '2',
             onClick: () => {
                 setIntensityIndex(11)
+                setLabel('Heavy')
             }
         },
         {
@@ -31,6 +37,7 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             key: '3',
             onClick: () => {
                 setIntensityIndex(16)
+                setLabel('Gogins')
             }
         }
     ]
@@ -41,7 +48,7 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             trigger={['click']}>
             <a onClick={(e) => e.preventDefault()}>
                 <div className={style.dropdown}>
-                    <p>{intensity}</p>
+                    <p>{label}</p>
                     <div className={style.arrow}>
                         <CaretDownFilled/>
                     </div>
