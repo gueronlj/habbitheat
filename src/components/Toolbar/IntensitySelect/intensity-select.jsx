@@ -9,28 +9,28 @@ export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
             label: "Light",
             key: '0',
             onClick: () => {
-                setIntensityIndex('Light')
+                setIntensityIndex(1)
             }
         },
         {
             label: "Medium",
             key: '1',
             onClick: () => {
-                setIntensityIndex('Medium')
+                setIntensityIndex(6)
             }
         },
         {
             label: "Heavy",
             key: '2',
             onClick: () => {
-                setIntensityIndex('Heavy')
+                setIntensityIndex(11)
             }
         },
         {
             label: "Gogins",
             key: '3',
             onClick: () => {
-                setIntensityIndex('Gogins')
+                setIntensityIndex(16)
             }
         }
     ]
