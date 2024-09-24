@@ -1,14 +1,16 @@
 import { Switch, Form, Dropdown, Space } from 'antd';
 import styles from './form.module.css';
 import { DownOutlined } from '@ant-design/icons';
-
+import { useState, useEffect } from 'react';
 const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
+   const [weighted, setWeighted] = useState(habit.isweighted)
    const [form] = Form.useForm();
 
    const handleDelete = (id) => {
       setTargetId(id)
       setShowConfirm(true);
    }
+
 
    const onSubmit = async () => {
 
@@ -57,6 +59,10 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
       }
     ];
 
+   useEffect(() => {
+      setWeighted(habit.isweighted)
+   }, [habit])
+
    return(
       <Form
          form={form}
@@ -66,29 +72,35 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
          <Form.Item
             name="Weighted">
             <Space>
-               Weighted  
+               {weighted ? 'Unweighted' : 'Weighted'}  
             </Space>
-            <Switch />
+            <Switch 
+               onChange={() => {
+                  setWeighted(!weighted)
+               }}
+            />
          </Form.Item>
 
-         <Form.Item
-            name="Units">
-            <Dropdown
-               menu={{
-                  items,
-               }}
-               trigger={['click']}>
-               <a onClick={(e) => e.preventDefault()}>
-                  <Space>
-                     Units
-                  </Space>
-                  <Space>
-                     <DownOutlined />
-                  </Space>
-               </a>
-            </Dropdown>  
-         </Form.Item>
-         
+         {weighted && (
+            <Form.Item
+               name="Units">
+               <Dropdown
+                  menu={{
+                     items,
+                  }}
+                  trigger={['click']}>
+                  <a onClick={(e) => e.preventDefault()}>
+                     <Space>
+                        Units
+                     </Space>
+                     <Space>
+                        <DownOutlined />
+                     </Space>
+                  </a>
+               </Dropdown>  
+            </Form.Item>
+         )}
+
          <button className={styles.btn} htmltype="submit">
                Save
          </button>

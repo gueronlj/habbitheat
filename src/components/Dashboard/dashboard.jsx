@@ -34,7 +34,7 @@ const Dashboard = ( {showForm, setShowForm}) => {
             <button 
                className={styles.addHabitButton}
                onClick={() => setShowForm(true)}>
-                  Add Habit
+                  Add a new habit
             </button>
 
             <div className={styles.cardsContainer}>
