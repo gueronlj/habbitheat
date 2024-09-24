@@ -22,9 +22,10 @@ const Habits = () => {
                 <>
                     {result.data.map((habit) => (
                         <HeatGraph
-                        key={habit.id}
-                        title={habit.title}
-                        id={habit.id}/>
+                            key={habit.id}
+                            title={habit.title}
+                            id={habit.id}
+                            isWeighted={habit.isweighted}/>
                     ))}
                 </>}
         </div>

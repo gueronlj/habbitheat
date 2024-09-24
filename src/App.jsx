@@ -33,11 +33,7 @@ function App() {
                         }/>
                 </Routes>  
                 :
-                <>
-                    {isLoading ? <h1>Signing in...</h1> 
-                    :
-                    <Login loginWithRedirect={loginWithRedirect}/>}
-                </>      
+               <Login/>
             }
         </>
     );

@@ -3,7 +3,7 @@ import HeatMap from '@uiw/react-heat-map';
 import axios from 'axios';
 import { Toolbar } from '../Toolbar/toolbar.jsx';
 
-const HeatGraph = ({ title, id }) => {
+const HeatGraph = ({ title, id, isWeighted }) => {
 
    const [heatColors, setHeatColors] = useState()
    const [loading, setLoading] = useState(false)
@@ -20,7 +20,7 @@ const HeatGraph = ({ title, id }) => {
    }
 
    useEffect(() => {
-     fetchData()
+        fetchData()
    }, [])
  
     return (
@@ -31,7 +31,8 @@ const HeatGraph = ({ title, id }) => {
                 setLoading={setLoading}
                 setHeatColors={setHeatColors}
                 fetchData={fetchData}
-                id={id}/>
+                id={id}
+                isWeighted={isWeighted}/>
             <HeatMap
                 value={data}
                 rectSize={15}

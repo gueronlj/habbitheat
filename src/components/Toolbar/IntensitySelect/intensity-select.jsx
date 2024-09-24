@@ -2,9 +2,8 @@ import { CaretDownFilled } from '@ant-design/icons';
 import { Dropdown} from 'antd';
 import style from '../style.module.css';
 import { useState } from 'react';
-import { set } from 'date-fns';
 
-export const IntensitySelect = ({ intensity, setIntensityIndex }) => {
+export const IntensitySelect = ({ setIntensityIndex }) => {
     const [label, setLabel] = useState('Light')
 
     const items = [

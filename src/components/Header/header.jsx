@@ -13,7 +13,7 @@ const Header = () => {
       <div className={style.header}>
          <h2>Habit Heat</h2>    
          <Link className={style.link} to="/">Heatmaps</Link>
-         <Link className={style.link} to="/dashboard">Dashboard</Link>      
+         <Link className={style.link} to="/dashboard">Settings</Link>      
          {isAuthenticated &&
             <Link className={style.link} onClick={handleLogout}>Sign-out</Link>
          }

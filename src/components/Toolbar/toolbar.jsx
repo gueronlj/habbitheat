@@ -1,15 +1,19 @@
 import { ColorSelect } from './ColorSelect/ColorSelect.jsx';
 import { CheckSquareFilled, CheckSquareOutlined, UndoOutlined } from '@ant-design/icons';
-import { addProgress } from '../../utilities/api.js';
+import { addProgress, undoProgress } from '../../utilities/api.js';
 import { format } from 'date-fns';
 import { useCallback } from 'react';
 import {IntensitySelect} from './IntensitySelect/intensity-select.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import style from './style.module.css';
+import axios from 'axios';  
 
-export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, id}) => {
+export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, id, isWeighted}) => {
 
     const [intensityIndex, setIntensityIndex] = useState('Intensity')
+    const [weighted, setWeighted] = useState()
+
+    const url = import.meta.env.VITE_APP_ENDPOINT_DEV;
 
     const currentDate = useCallback(() => {
         const formattedDate = format(new Date(), 'yyyy/MM/dd')
@@ -32,30 +36,38 @@ export const Toolbar = ({setHeatColors, title, loading, setLoading, fetchData, i
     }
 
     const handleUndo = async () => {
-        try {
-            setLoading(true)
+        try{
+            const response = await axios.put(`${url}/api/habits/edit/${id}`);
+            console.log(response.data)
             await fetchData()
-            setLoading(false)
-        } catch(e) {
-            console.log(e.message)
+        } catch(e){
+            console.log(e.message);
         }
     };
+
+    useEffect(() => {
+        setWeighted(isWeighted)
+    }, [])
 
     return (
         <div className={style.toolbar}>
             <h3>{title}</h3>
             <div className={style.tools}>
-                <IntensitySelect
-                    intensity={intensityIndex}
-                    setIntensityIndex={setIntensityIndex}/>
-                {!loading?
-                <CheckSquareOutlined
-                    style={{ fontSize: '24px', color: 'white' }}
-                    onClick={() => handleAddProgress(id)}/>
-                :
-                <CheckSquareFilled
-                style={{ fontSize: '24px', color: 'green' }} />
-                }
+                <div className={style.intensitySelect}>
+                    {weighted &&
+                        <IntensitySelect
+                            setIntensityIndex={setIntensityIndex}/>
+                    
+                    }
+                    {!loading?
+                        <CheckSquareOutlined
+                            style={{ fontSize: '27px', color: 'white' }}
+                            onClick={() => handleAddProgress(id)}/>
+                    :
+                        <CheckSquareFilled
+                            style={{ fontSize: '27px', color: 'green' }} />
+                    }
+                </div>   
                 <UndoOutlined
                     style={{ fontSize: '24px', color: 'white' }}
                     onClick={handleUndo} />

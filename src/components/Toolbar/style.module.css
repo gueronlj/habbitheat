@@ -28,7 +28,8 @@
     padding-left: 50px;
     padding-right: 10px;
     align-items: center;
-    background-color: rgb(59, 50, 126);
+    background-color: #060c1b;
+    ;
 }
 
 .tools{
@@ -38,8 +39,13 @@
     align-items: center;
 }
 
-
-
 .tools > *{
     margin: .5em;
+}
+
+.intensitySelect{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }

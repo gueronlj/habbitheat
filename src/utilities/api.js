@@ -29,6 +29,15 @@ export const addProgress = async (habitId, data) => {
    }
 }
 
+export const undoProgress = async (habitId) => {
+   try{
+      const response = await axios.put(`${url}/api/habits/edit/${habitId}`);
+      return response.data;
+   }catch(e){
+      return e
+   }
+}
+
 export const deleteHabit = async (habitId) => {
    try{
       const response = await axios.delete(`${url}/api/habits/${habitId}`);
