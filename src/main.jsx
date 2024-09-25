@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Auth0Provider
                 domain={domain}
                 clientId={clientId}
-                authorizationParams={{redirect_uri: 'http://localhost:5173/'}}>
+                authorizationParams={{redirect_uri: 'https://habbitheat.vercel.app/'}}>
                 <App/>
             </Auth0Provider>
         </Router>
