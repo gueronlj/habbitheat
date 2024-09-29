@@ -1,5 +1,5 @@
 import { Button, Form, Input} from 'antd';
-import { postHabit } from '../utilities/api';
+import { postHabit } from '../../utilities/api';
 import styles from './form.module.css';
 
 const NewHabitForm = ({ query, setShowForm }) => {

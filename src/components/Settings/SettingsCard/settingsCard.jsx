@@ -1,5 +1,5 @@
 import styles from './card.module.css';
-import EditHabit from '../../../forms/editHabit';   
+import EditHabit from '../../forms/editHabit.jsx';   
 
 const SettingsCard = ({habit, setTargetId, setShowConfirm}) => {
 

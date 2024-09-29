@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchHabits, deleteHabit } from '../../utilities/api';
 import ConfirmModal from '../ConfirmModal/confirm-modal';
-import NewHabitForm from '../../forms/newHabit';
-import SettingsCard from './SettingsCard/settingsCard';
+import SettingsCard from './SettingsCard/settingsCard.jsx';
+import NewHabitForm from '../forms/newHabit.jsx';
 
 const Settings = () => {
    const [showForm, setShowForm] = useState(false);
@@ -44,7 +44,6 @@ const Settings = () => {
 
    return(
       <>
-         <SideMenu/>
          <div className={styles.container}>
             <h2>Tracked Habits</h2>
 
