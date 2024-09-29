@@ -1,16 +1,16 @@
-import styles from './dashboard.module.css';
+import styles from './settings.module.css';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchHabits, deleteHabit } from '../../utilities/api';
-import ConfirmModal from '../../components/ConfirmModal/confirm-modal';
+import ConfirmModal from '../ConfirmModal/confirm-modal';
 import NewHabitForm from '../../forms/newHabit';
-import { useState } from 'react';
-import SettingsCard from '../SettingsCard/settingsCard';
+import SettingsCard from './SettingsCard/settingsCard';
 
-
-const Dashboard = ( {showForm, setShowForm}) => {
-   const userId = 1;
+const Settings = () => {
+   const [showForm, setShowForm] = useState(false);
    const [showConfirm, setShowConfirm] = useState(false);
    const [targetId, setTargetId] = useState();
+   const userId = 1;
 
    const query = useQuery({queryKey:['habits'], queryFn: () => fetchHabits(userId)})
 
@@ -24,10 +24,27 @@ const Dashboard = ( {showForm, setShowForm}) => {
       }
    }
 
-   if (query.data?.name == 'AxiosError'){
-      return( <p>Server is down!</p> )
-   }else{
+   if (query.data === null){
       return(
+         <p>Server is down!</p>
+      )
+   }
+
+   if (query.isLoading){
+      return(
+         <p>Loading...</p>
+      )
+   }
+
+   if (query.data.length === 0){
+      return(
+         <p>No habits found</p>
+      )
+   }
+
+   return(
+      <>
+         <SideMenu/>
          <div className={styles.container}>
             <h2>Tracked Habits</h2>
 
@@ -52,15 +69,15 @@ const Dashboard = ( {showForm, setShowForm}) => {
                      setShowForm={setShowForm}
                      query={query}/>}
             </div>
-   
+
             {showConfirm && 
                <ConfirmModal
                   onConfirm={confirmDelete}
                   setShowConfirm={setShowConfirm}
                   targetId={targetId}/>}       
          </div>
-      )
-   } 
+      </>
+   )
 }
 
-export default Dashboard;
+export default Settings;

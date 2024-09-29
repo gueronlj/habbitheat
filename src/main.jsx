@@ -10,17 +10,21 @@ const domain =  import.meta.env.VITE_APP_DOMAIN
 const clientId = import.meta.env.VITE_APP_CLIENT_ID
 const queryClient = new QueryClient()
 
+console.log(redirectURL)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-        <Router>
-            <Auth0Provider
-                domain={domain}
-                clientId={clientId}
-                authorizationParams={{redirect_uri: 'https://habbitheat.vercel.app/'}}>
-                <App/>
-            </Auth0Provider>
-        </Router>
+      <Router>
+        <Auth0Provider
+          domain={domain}
+          clientId={clientId}
+          authorizationParams={{
+            redirect_uri: window.location.origin
+          }} >
+          <App/>
+        </Auth0Provider>
+      </Router>
     </QueryClientProvider>       
   </React.StrictMode>
 )

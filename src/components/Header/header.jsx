@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
-   const {user, logout, isAuthenticated } = useAuth0();
+   const {logout, isAuthenticated } = useAuth0();
 
    const handleLogout = () => {
-      logout({ returnTo: 'http://localhost:5173/' });
+      logout({ returnTo: 'https://habbitheat.vercel.app' });
    }
 
    return(

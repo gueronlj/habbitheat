@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import HeatMap from '@uiw/react-heat-map';
 import axios from 'axios';
-import { Toolbar } from '../Toolbar/toolbar.jsx';
+import { Toolbar } from './Toolbar/toolbar.jsx';
 
 const HeatGraph = ({ title, id, isWeighted }) => {
 
