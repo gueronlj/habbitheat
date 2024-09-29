@@ -10,8 +10,6 @@ const domain =  import.meta.env.VITE_APP_DOMAIN
 const clientId = import.meta.env.VITE_APP_CLIENT_ID
 const queryClient = new QueryClient()
 
-console.log(redirectURL)
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
