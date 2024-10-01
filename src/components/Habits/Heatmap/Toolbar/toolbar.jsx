@@ -1,6 +1,6 @@
 import { ColorSelect } from './ColorSelect/ColorSelect.jsx';
 import { CheckSquareFilled, CheckSquareOutlined, UndoOutlined } from '@ant-design/icons';
-import { addProgress, undoProgress } from '../../utilities/api.js';
+import { addProgress, undoProgress } from '../../../../utilities/api.js';
 import { format } from 'date-fns';
 import { useCallback } from 'react';
 import {IntensitySelect} from './IntensitySelect/intensity-select.jsx';

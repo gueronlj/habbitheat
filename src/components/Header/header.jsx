@@ -3,19 +3,22 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
-   const {user, logout, isAuthenticated } = useAuth0();
+   const {logout, isAuthenticated, user } = useAuth0();
 
    const handleLogout = () => {
-      logout({ returnTo: 'http://localhost:5173/' });
+      logout({ returnTo: 'https://habbitheat.vercel.app' });
    }
 
    return(
       <div className={style.header}>
          <h2>Habit Heat</h2>    
          <Link className={style.link} to="/">Heatmaps</Link>
-         <Link className={style.link} to="/dashboard">Settings</Link>      
+         <Link className={style.link} to="/settings">Settings</Link>      
          {isAuthenticated &&
-            <Link className={style.link} onClick={handleLogout}>Sign-out</Link>
+            <>
+               <p>{user.email}</p>
+               <Link className={style.link} onClick={handleLogout}>Sign-out</Link>
+            </>
          }
       </div>
    )

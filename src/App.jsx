@@ -1,22 +1,23 @@
 import './App.css';
-import Habits from './pages/habits.jsx';
+import Habits from './components/Habits/Habits.jsx';
 import Header from './components/Header/header.jsx';
 import { Route, Routes } from "react-router-dom";
-import Dashboard from './components/Dashboard/dashboard.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
-import Login from './pages/login.jsx';
+import Settings from './components/Settings/Settings.jsx';
+import Login from './components/Login/Login.jsx';
 
 function App() {
-    const { isAuthenticated, user, loginWithRedirect, isLoading } = useAuth0();
+    const { isAuthenticated } = useAuth0();
     const [showForm, setShowForm] = useState(false);
 
-    return (
-        <>  
-            <Header
-                user={user}/>
-
-            {isAuthenticated?
+    if (!isAuthenticated){
+        return <Login/>
+    } else {
+        return (
+            <>  
+                <Header />
+                
                 <Routes>
                     <Route 
                         path="/"
@@ -24,19 +25,16 @@ function App() {
                             <Habits/>
                         }/>
                     <Route 
-                        path="/dashboard" 
+                        path="/settings" 
                         element={
-                            <Dashboard
+                            <Settings
                                 setShowForm={setShowForm}
-                                showForm={showForm}
-                                user={user}/>
+                                showForm={showForm}/>
                         }/>
                 </Routes>  
-                :
-               <Login/>
-            }
-        </>
-    );
+            </>
+        );
+    }
 }
 
 export default App
