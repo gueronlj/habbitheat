@@ -16,7 +16,7 @@ const Header = () => {
          <Link className={style.link} to="/settings">Settings</Link>      
          {isAuthenticated &&
             <>
-               <p>{user.name}</p>
+               <p>{user.email}</p>
                <Link className={style.link} onClick={handleLogout}>Sign-out</Link>
             </>
          }

@@ -1,9 +1,11 @@
 import HeatGraph from './Heatmap/Heatgraph.jsx'
 import {fetchHabits} from '../../utilities/api.js'
 import {useQuery} from '@tanstack/react-query'
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Habits = () => {
-    const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(1)})
+    const { user } = useAuth0();
+    const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(user.email)})
 
     if (result.isError){
         return(

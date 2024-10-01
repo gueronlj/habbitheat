@@ -5,14 +5,14 @@ import { fetchHabits, deleteHabit } from '../../utilities/api';
 import ConfirmModal from '../ConfirmModal/confirm-modal';
 import SettingsCard from './SettingsCard/settingsCard.jsx';
 import NewHabitForm from '../forms/newHabit.jsx';
-
+import { useAuth0 } from '@auth0/auth0-react';
 const Settings = () => {
    const [showForm, setShowForm] = useState(false);
    const [showConfirm, setShowConfirm] = useState(false);
    const [targetId, setTargetId] = useState();
-   const userId = 1;
+   const { user } = useAuth0();
 
-   const query = useQuery({queryKey:['habits'], queryFn: () => fetchHabits(userId)})
+   const query = useQuery({queryKey:['habits'], queryFn: () => fetchHabits(user.email)})
 
    const confirmDelete = async (id) => {
       try{
