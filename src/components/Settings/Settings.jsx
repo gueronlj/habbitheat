@@ -6,6 +6,7 @@ import ConfirmModal from '../ConfirmModal/confirm-modal';
 import SettingsCard from './SettingsCard/settingsCard.jsx';
 import NewHabitForm from '../forms/newHabit.jsx';
 import { useAuth0 } from '@auth0/auth0-react';
+
 const Settings = () => {
    const [showForm, setShowForm] = useState(false);
    const [showConfirm, setShowConfirm] = useState(false);
@@ -38,7 +39,15 @@ const Settings = () => {
 
    if (query.data.length === 0){
       return(
-         <p>No habits found</p>
+         <>
+            <p>You have not added any habits yet</p>
+            <button 
+               className={styles.addHabitButton}
+               onClick={() => setShowForm(true)}>
+                  Add a new habit
+            </button>
+            <NewHabitForm setShowForm={setShowForm}/>
+         </>
       )
    }
 

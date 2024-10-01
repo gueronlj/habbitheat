@@ -2,9 +2,11 @@ import HeatGraph from './Heatmap/Heatgraph.jsx'
 import {fetchHabits} from '../../utilities/api.js'
 import {useQuery} from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { useState } from 'react';
+import NewHabitForm from '../forms/newHabit.jsx';
 const Habits = () => {
     const { user } = useAuth0();
+    const [showForm, setShowForm] = useState(false);
     const result = useQuery({ queryKey: ['habits'], queryFn: () => fetchHabits(user.email)})
 
     if (result.isError){
@@ -21,7 +23,19 @@ const Habits = () => {
 
     if (result.data.length === 0){
         return(
-            <p>No habits found</p>
+            <>
+                <p>You have not added any habits yet.</p>
+                <button onClick={() => setShowForm(true)}>
+                    Add a new habit
+                </button>
+
+                {showForm &&
+                    <NewHabitForm 
+                    setShowForm={setShowForm}
+                    query={result}
+                    />
+                }
+            </>
         )
     }
 

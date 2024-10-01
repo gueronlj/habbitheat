@@ -70,11 +70,13 @@ const EditHabit = ({ habit, setTargetId, setShowConfirm }) => {
          onFinish={onSubmit}>
 
          <Form.Item
-            name="Weighted">
+            >
             <Space>
-               {weighted ? 'Unweighted' : 'Weighted'}  
+               {weighted ? 'Weighted' : 'Unweighted'}  
             </Space>
             <Switch 
+               checked={weighted}
+               name="Weighted"
                onChange={() => {
                   setWeighted(!weighted)
                }}

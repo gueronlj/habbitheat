@@ -1,18 +1,19 @@
 import { Button, Form, Input} from 'antd';
 import { postHabit } from '../../utilities/api';
 import styles from './form.module.css';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const NewHabitForm = ({ query, setShowForm }) => {
    const [form] = Form.useForm();
-   const userID = 1;
-   
+   const { user } = useAuth0();
+
    const onFinish = async () => {
       try{
          const data =  {
             title: form.getFieldValue('Title'),
             dates: [],
          }
-         await postHabit(data, userID)
+         await postHabit(data, user.email)
          await query.refetch();
          setShowForm(false);
       } catch(e){
